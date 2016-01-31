@@ -1,5 +1,10 @@
 source 'http://rubygems.org'
 
+
+
+
+#Devise gem for user authentification
+gem 'devise'
 #for twiter UI
 gem 'bootstrap-sass', '~>3.3.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
