@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   #back end code for pages/index
   def index
+    @post = Post.all
   end
 #back end code for pages/home
   def home
@@ -15,6 +16,7 @@ class PagesController < ApplicationController
   		redirect_to root_path, :notice=> "User not found!!!"
   	end	
     @posts=Post.all.where("user_id=?", User.find_by_username(params[:id]).id)
+    @newPost=Post.new
   end
 #back end code for pages/explore
   def explore
