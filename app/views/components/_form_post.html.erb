@@ -18,12 +18,18 @@
 	      <%= f.text_field :content, autofocus: true, class:"form-control" %>
 	      <span type="button", style="float: right; margin-top: 3px;", class="btn btn-submit"><%= f.submit "Add Post", class:"btn btn-primary" %></span>
 	    </div>
-
+		<script>
+		$('.btn btn-primary').click(function Addvalue(){
+		var value=$('#post-content').val();
+		$('.post-content panel-body').append(value);
+			});
+		</script>
 	
 	<% end %>
   				</div>				
 			</div>
 		</div>
+		
 
 
 

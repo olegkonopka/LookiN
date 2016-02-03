@@ -1,18 +1,53 @@
-<div class="row">
-	<div class="col-xs-12">
-		<div class="jumbotron">
-			<%= @username %>
-		</div>
-	</div>
-</div>
+<style type="text/css">
+	
+	.post-panel
+	{
+		margin-top: -21px;
+	}
+	.post-content{
+		text-align: left;
+		margin-left: 15px;
+		
+	}
+	.post-links{
+		text-align: left;
+	}
+	.post-title{
+		text-align: left;
+		margin-left: 15px;
+	}
+	.post-owner{
+		color: black;
+		font-weight: bold;
+	}
+	.post-creation{
+		opacity: 0.75;
+	}
+	.g-links{
+		opacity: 0.5;
+		font-size: 120%;
+		margin-right: 45px;
+	}
+		.profile-banner {
+	    width: 100%;
+	    height: 400px;
+	    margin-top: -21px;
+	}
+</style>
+
 
 
 <div class="row">
 	<div class="col-xs-3">
-		<div class="panel panel-default">
-  			<div class="panel-body">
-				<p>Profile</p>
-			</div>
+		<div class="col-xs-12" style="margin-top: -200px;">
+				<img src="/logo.jpg"  height="200px" width="200px" class="rounded-image home-avatar">
+		</div>
+		<div class="col-m-12" style="margin-left: 20px;">
+			<h3 style="font-weight: bold;"><%= params[:id] %></h3>
+			<p style="opacity: 0.7;">
+				Hello! My name is Oleg.<br>
+				I'm a beginer developer.
+			</p>
 		</div>	
 	</div>
 	
@@ -21,9 +56,24 @@
 		<%= render '/components/form_post' %>
 
 		<% for @p in @posts %>
-		<div class="panel panel-default">
-  			<div class="panel-body">
-				<p><%= @p.content %></p>
+		<div class="panel panel-default post-panel">
+  			<div class="panel-body row">
+  				<div class="col-sm-1">
+  					<img src="/logo.jpg" class="rounded-image" height="50px" width="50px">
+  				</div>
+  				<div class="col-sm-11">
+  					<p class="post-title"><span class="post-owner"><%=User.find(@p.user_id).username %></span><span class="post-creation"> - <%=@p.created_at.to_formatted_s(:short) %></span></p>
+  					<p class="post-content panel-body"><%= @p.content %></p>
+  				</div>
+  				<div class="col-sm-12">
+  					<p class="post-links">
+  						<span class="glyphicon glyphicon-comment g-links" aria-hidden="true"></span>
+  						<span class="glyphicon glyphicon-retweet g-links" aria-hidden="true"></span>
+  						<span class="glyphicon glyphicon-heart g-links" aria-hidden="true"></span>
+						<span class="glyphicon glyphicon-option-horizontal g-links" aria-hidden="true"></span>
+						<a href="/">View conversation</a>
+  					</p>
+  				</div>
 			</div>
 		</div>
 		<% end %>
@@ -33,11 +83,21 @@
 		<div class="panel panel-default">
   			<div class="panel-body">
 				<p>Who to follow</p>
+			<% for @u in @toFollow do %>
+               <p style="font-weight: bold; opacity: 0.85;" ><a href="/user/<%= @u.username %>"><%= @u.username %></a></p>
+             <% end %>
 			</div>
 		</div>
+
 		<div class="panel panel-default">
   			<div class="panel-body">
-				<p>Trends</p>
+  			<h5 style="color: grey; font-size: 125%;">Trends</h5>
+              <a href="">#Trend #1</a><br>
+                <span style="color: grey;">31k Posts</span><br><br>
+              <a href="">#Trend #2</a><br>
+                <span style="color: grey;">25k Posts</span><br><br>
+              <a href="">#Trend #3</a><br>
+                <span style="color: grey;">16k Posts</span><br><br>
 			</div>
 		</div>
 	</div>

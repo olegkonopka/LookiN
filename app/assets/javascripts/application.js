@@ -16,3 +16,9 @@
 
 //= require bootstrap-sprockets
 //= require_tree .
+
+		
+		$('.btn btn-primary').click(function Addvalue(){
+		var value=$('#post-content').val();
+		$('.post-content panel-body').append(value);
+			});
