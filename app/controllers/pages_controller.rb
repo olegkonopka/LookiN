@@ -2,10 +2,12 @@ class PagesController < ApplicationController
   #back end code for pages/index
   def index
     @post = Post.all
+ 
   end
 #back end code for pages/home
   def home
      @posts=Post.all
+     @newPost=Post.new
   end
 #back end code for pages/profile
   def profile
